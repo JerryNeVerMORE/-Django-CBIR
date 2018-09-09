@@ -1,0 +1,11 @@
+{% extends 'temp.html' %}
+ 
+{% block content %}
+ 
+<h2>我的动态</h2>
+
+{% for article in article_list %}
+    <a href="{% url 'detail' id=article.id %}"> <img src="{{ article.img_url.url }}" width="200" height="200"> </a>
+{% endfor %}
+
+{% endblock %}

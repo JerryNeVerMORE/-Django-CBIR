@@ -1,0 +1,19 @@
+{% extends 'index1.html' %}
+ 
+{% block content %}
+
+<p>{{registAdd}}</p>
+<p> 😄</p>
+ 
+<br>
+================
+<br>
+{% if username %}
+注册失败{{ username }}已存在
+<a href="http://127.0.0.1:8000/regist">注册</a>
+{% else %}
+注册成功！
+<a href="http://127.0.0.1:8000/login">登陆</a>
+{% endif %}
+ 
+{% endblock %}

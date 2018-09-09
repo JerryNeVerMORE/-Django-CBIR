@@ -1,0 +1,25 @@
+{% extends 'index1.html' %}
+ 
+{% block content %}
+ <style type="text/css">
+ #myInput::-webkit-input-placeholder { color: white;}
+ #myInput:-moz-placeholder { color: white;}
+ #myInput:-ms-input-placeholder { color: white;}​
+ </style>
+<div>
+        <form action="/login/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="username"  placeholder="用户名是这个~" style="background:transparent;border:1px solid #ffffff" autofocus="True" onfocus="this.style.border='1px solid red';" onblur="this.style.border='1px solid gray';" />
+
+                <br/><br/>
+            <input type="password" name="password"  placeholder="密码在这里~" style="background:transparent;border:1px solid #ffffff" onfocus="this.style.border='1px solid red';" onblur="this.style.border='1px solid gray';" />
+            <br/><br/>
+
+            <button type="submit" class="btn btn-primary"  >登陆 </button>
+
+            <p style="color: red">{{ login_error }}</p>
+        </form>
+</div>
+ 
+{% endblock %}
+ 

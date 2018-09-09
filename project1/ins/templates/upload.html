@@ -1,0 +1,40 @@
+{% extends 'temp.html' %}
+
+{% block content %}
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+　<script>
+    function changImg(e){
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            //验证是否为图片，不是就跳出循环
+            if (!(/^image\/.*$/i.test(file.type))) {
+                alert("不是图片！")
+                continue;
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function(e) {
+                $("#image").attr("src",e.target.result);  //显示图片
+            }
+        }
+    }
+ </script>
+
+<h1 style="color:white ">今天心情不错？来张自拍吧~</h1>
+
+<p><form action="" method="post" enctype="multipart/form-data" style="position:relative">
+    {% csrf_token %}<br/>
+    <input type="file" name="img" accept="image/*" onchange="changImg(event)" style="position:absolute;opacity:0;" >
+    <img id="image" src="/static/images/logo2.png" height="150px",width="150px">
+    <input type="hidden" value="{{ user.username }}" name =  'uploader'>
+    <br/><br/><br/>
+    <input type="text" name="tags"  placeholder="描述你的美~" style="background:transparent;border:1px solid #ffffff"  onfocus="this.style.border='1px solid red';" onblur="this.style.border='1px solid gray';" />
+    <br/><br/>
+    <div style=" text-align:center;"><input class="btn btn-primary" type="submit" value="现在上传" > </div>
+
+</form></p>
+
+
+{% endblock %}
