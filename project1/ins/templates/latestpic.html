@@ -3,12 +3,12 @@
 {% block content %}
 
 <p tyle="color:white ">已经get到美丽的你~</p>
-    <img src="{{img.img_url.url}}" width="480" height="270">
-<br/>
-<h1><font size="7" face="Ink Free" color="green">{{img.img_tags}}</font> </h1>
+    <img src="{{img.img_url.url}}" width="720" height="405">
+<br/><br/><br/>
+<h1><font size="5" face="Ink Free" color="#FFFAF0">{{img.img_tags}}</font> </h1>
 <br/><br/>
 <h5>😄😄😊😍😘😜😝</h5>
-<br/><br/><br/>
-<a class="nav-link active" href="">快看看有多少人和你兴趣相同~</a>
+<br/>
+<a class="nav-link active" href="{% url 'result' id=img.id %}">快看看有多少人和你兴趣相同~</a>
 
 {% endblock %}

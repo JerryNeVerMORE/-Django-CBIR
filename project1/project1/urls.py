@@ -27,11 +27,12 @@ urlpatterns = [
     url(r'^regist/$', iv.regist),
     url(r'^login/$',iv.login),
     url(r'^logout/$', iv.logout),
-    url(r'^article/$', iv.article),
+    url(r'^article/(?P<uploader>\w+)$', iv.article,name='article'),
     url(r'^(?P<id>\d+)/$',iv.detail, name='detail'),
     url(r'^index1/$',iv.index1),
     url(r'^upload/$', iv.upload , name='upload'),
-    url(r'^latest/$',iv.latest)
+    url(r'^latest/$',iv.latest),
+    url(r'^result/(?P<id>\d+)$',iv.result,name='result')
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,6 +4,9 @@ from .models import *
 from django.contrib import auth
 from django import forms  # 导入表单
 from django.contrib.auth.models import User  # 导入django自带的user表
+from ins.searcher import Searcher
+from ins.colordescriptor import ColorDescriptor
+import cv2
 
 
 class UserForm(forms.Form):
@@ -23,6 +26,23 @@ def index(request):
 
 def index1(request):
     return render(request, 'index1.html')
+
+
+def result(request, id):
+    # 初始化颜色描述器
+    cd = ColorDescriptor((8, 12, 3))
+
+    img = Img.objects.get(pk=id)
+    img_url = img.img_name
+    query = cv2.imread("D:/project1/media/img/"+img_url)
+    features = cd.describe(query)
+    searcher = Searcher("D:/project1/index.csv")
+    results = searcher.search(features)
+    pic = []
+    for (score, resultID) in results:
+        result = "/static/img/"+resultID
+        pic.append(result)
+    return render(request,'result.html',{'results':pic})
 
 
 def upload(request):
@@ -85,8 +105,8 @@ def logout(request):
     return render(request, 'index1.html')
 
 
-def article(request):
-    article_list = Img.objects.all()
+def article(request,uploader):
+    article_list = Img.objects.filter(img_uploader = uploader)
     return render(request, 'article.html', {'article_list': article_list})
 
 

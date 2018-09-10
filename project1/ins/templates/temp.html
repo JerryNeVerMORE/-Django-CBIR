@@ -36,13 +36,13 @@
 
 
               <li class="nav-item">
-                <a class="nav-link" href="">查看上传</a>
+                <a class="nav-link" href="/upload/">上传图片</a>
               </li>
 
 
               {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="/article/">{{ user.username }}</a>
+                <a class="nav-link" href="{% url 'article' uploader=user.username  %}">{{ user.username }}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/logout/">退出</a>
