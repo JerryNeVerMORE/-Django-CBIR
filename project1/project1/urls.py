@@ -32,7 +32,9 @@ urlpatterns = [
     url(r'^index1/$',iv.index1),
     url(r'^upload/$', iv.upload , name='upload'),
     url(r'^latest/$',iv.latest),
-    url(r'^result/(?P<id>\d+)$',iv.result,name='result')
+    url(r'^result/(?P<id>\d+)$',iv.result,name='result'),
+    url(r'^others/(?P<uploader>\w+)$',iv.others,name='others'),
+    url(r'^myfriends/(?P<uploader>\w+)$',iv.myfriends,name='friends')
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

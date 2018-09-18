@@ -23,6 +23,11 @@ class UserForm(forms.Form):
 def index(request):
     return render(request, 'index.html')
 
+def myfriends(request, uploader):
+
+
+    friend_list = friend.objects.filter(username = uploader)
+    return render(request,'myfriends.html',{'friendlists':friend_list})
 
 def index1(request):
     return render(request, 'index1.html')
@@ -40,8 +45,8 @@ def result(request, id):
     results = searcher.search(features)
     pic = []
     for (score, resultID) in results:
-        result = "/static/img/"+resultID
-        pic.append(result)
+        result_ = Img.objects.get(img_name = resultID)
+        pic.append(result_)
     return render(request,'result.html',{'results':pic})
 
 
@@ -108,6 +113,17 @@ def logout(request):
 def article(request,uploader):
     article_list = Img.objects.filter(img_uploader = uploader)
     return render(request, 'article.html', {'article_list': article_list})
+
+def others(request,uploader):
+    if request.method == 'POST':
+        test = friend.objects.filter(username = request.POST.get('username',''), friendname = request.POST.get('friendname',''))
+        fri = friend(username = request.POST.get('username',''),
+                     friendname = request.POST.get('friendname','')
+        )
+        if not test:
+            fri.save()
+    article_list = Img.objects.filter(img_uploader = uploader)
+    return render(request, 'others_detail.html', {'article_list': article_list})
 
 
 def detail(request, id):

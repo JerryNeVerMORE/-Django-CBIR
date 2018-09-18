@@ -1,0 +1,14 @@
+{% extends 'temp.html' %}
+
+{% block content %}
+
+<div class="mb-5 element-animate">
+              <h1>我的关注</h1>
+            </div>
+
+{% for friend in friendlists%}
+
+<a href="{% url 'others' uploader=friend.friendname %}"><h1><font size="5" face="Ink Free" color="#87CEFA">{{ friend.friendname}}</font></h1></a>
+
+{% endfor %}
+{% endblock %}

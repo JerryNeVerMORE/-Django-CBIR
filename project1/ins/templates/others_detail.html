@@ -1,0 +1,18 @@
+{% extends 'temp.html' %}
+ 
+{% block content %}
+
+<h1><font size="5" face="Ink Free" color="#87CEFA">{{article_list.1.img_uploader}}的动态</font></h1>
+
+{% for article in article_list %}
+    <a href="{% url 'detail' id=article.id %}"> <img src="{{ article.img_url.url }}" width="360" height="270"> </a>
+{%  endfor %}
+
+<p><form action="" method="post" enctype="multipart/form-data" style="position:relative">
+    {% csrf_token %}<br/>
+    <input type="hidden" value="{{user.username}}" name="username">
+    <input type="hidden" value="{{article_list.1.img_uploader}}" name="friendname">
+
+    <div style=" text-align:center;"><input class="btn btn-primary" type="submit" value="关注他" > </div>
+</form></p>
+{% endblock %}

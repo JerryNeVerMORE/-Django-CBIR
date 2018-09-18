@@ -35,12 +35,16 @@
             <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
 
 
-              <li class="nav-item">
-                <a class="nav-link" href="/upload/">上传图片</a>
-              </li>
+
 
 
               {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'friends' uploader=user.username %}">我的关注</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/upload/">上传图片</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'article' uploader=user.username  %}">{{ user.username }}</a>
               </li>

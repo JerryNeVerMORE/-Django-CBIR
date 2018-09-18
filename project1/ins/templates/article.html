@@ -2,7 +2,9 @@
  
 {% block content %}
  
-<h2>我的动态</h2>
+<div class="mb-5 element-animate">
+              <h1>我的动态</h1>
+            </div>
 
 {% for article in article_list %}
     <a href="{% url 'detail' id=article.id %}"> <img src="{{ article.img_url.url }}" width="360" height="270"> </a>

@@ -2,7 +2,7 @@
 {% block content%}
 
 <p> 这是显示推荐结果的界面！</p>
-{% for result in results%}
-<a  href=""><img  src="{{result}}" width="360" height="270"></a>
+{% for result_ in results%}
+<a  href="{% url 'others' uploader=result_.img_uploader %}"><img  src="{{result_.img_url.url}}" width="360" height="270" title="{{result_.img_uploader}}"></a>
 {% endfor%}
 {% endblock %}

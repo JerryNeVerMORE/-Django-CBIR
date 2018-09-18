@@ -10,6 +10,9 @@
 <br/><br/>
 <h5>😄😄😊😍😘😜😝</h5>
 <br/><br/>
-<a class="nav-link active" href="{% url 'result' id=article.id %}">快看看有多少人和你兴趣相同~</a>
-
+{% if user.username == article.img_uploader %}
+    <a class="nav-link active" href="{% url 'result' id=article.id %}">快看看有多少人和你兴趣相同~</a>
+{% else %}
+    <h1><font size="5" face="Ink Free" color="#87CEFA">{{article.img_uploader}}的动态</font></h1>
+{% endif %}
 {% endblock %}

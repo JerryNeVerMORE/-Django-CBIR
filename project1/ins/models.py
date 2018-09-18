@@ -10,6 +10,10 @@ class Img(models.Model):
     img_uploader = models.TextField(default="0")
 
 
+class friend(models.Model):
+    username = models.TextField(default="0")
+    friendname = models.TextField(default="0")
+
 class Article(models.Model):
     title = models.CharField(u'标题', max_length=256,default="title")
     content = models.TextField(u'内容',default="content")

@@ -40,6 +40,9 @@
 
               {% if user.is_authenticated %}
               <li class="nav-item">
+                <a class="nav-link" href="{% url 'friends' uploader=user.username %}">我的关注</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/upload/">上传图片</a>
               </li>
               <li class="nav-item">
